@@ -106,7 +106,7 @@ class App extends Component {
       <Credits 
       credits = {this.state.creditList} 
       addCredit = {this.addCredit}
-
+      accountBalance = {this.state.accountBalance}
       />) 
 
     //pass down addDebit method to child
@@ -114,6 +114,7 @@ class App extends Component {
       <Debits 
       debits = {this.state.debitList} 
       addDebit = {this.addDebit}
+      accountBalance = {this.state.accountBalance}
       />) 
 
     // Important: Include the "basename" in Router, which is needed for deploying the React app to GitHub Pages
