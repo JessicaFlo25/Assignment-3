@@ -31,11 +31,14 @@ class App extends Component {
       //add data retrieved to the debit list array to pass down as props
       addCredit = ( amount, description, date) => {
         const nextCreditId = this.state.creditList.length + 1;
-
+        //account for change in account balance by subtracting new entry from account balance
+        const updatedBalance = this.state.accountBalance - parseFloat(amount);
         //create object to be added to the array
         const newCredit = { id: nextCreditId, amount,description, date };
         //add the object in the debtList array
+        //update state for accountBalance
         this.setState(prevState => ({
+          accountBalance: updatedBalance,
           creditList: [...prevState.creditList, newCredit]
         }));
       };
@@ -44,10 +47,13 @@ class App extends Component {
       addDebit = (description,amount, date) => {
         //need to keep track of ids and pass to array
         const nextDebitId = this.state.creditList.length + 1;
+        //will perform math for "deposits"
+        const updatedBalance = this.state.accountBalance + parseFloat(amount);
         //create object to be added to the array
         const newDebit = { id: nextDebitId, description, amount, date };
         //add the object in the debtList array
         this.setState(prevState => ({
+          accountBalance: updatedBalance,
           debitList: [...prevState.debitList, newDebit]
         }));
       }
