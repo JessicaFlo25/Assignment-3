@@ -5,8 +5,11 @@ The Credits component contains information for Credits page view.
 Note: You need to work on this file for the Assignment.
 ==================================================*/
 import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import AccountBalance from './AccountBalance';
 
 const Credits = (props) => {
+
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevent default form submission behavior
     
@@ -19,8 +22,7 @@ const Credits = (props) => {
     const formData = new FormData(e.target);
     
     // Call the function passed from the parent component to add the new credit
-    props.addCredit(props.creditList.length - 1,formData.get('debtname'),formData.get('amount'),formattedDate);
-    console.log(props.credits)
+    props.addCredit(formData.get('amount'),formData.get('description'),formattedDate);
 
     // Reset the form fields
     e.target.reset();
@@ -34,7 +36,7 @@ const Credits = (props) => {
         <div className='creditContainer'>
           <div className='leftSide'>
             <p>
-              Current balance:
+              {<AccountBalance />}
             </p>
           </div>
           {/* right side includes table and data insertion fields */}
@@ -48,10 +50,12 @@ const Credits = (props) => {
                   </tr>
                 </thead>
                 <tbody>
+                  {/* lopp through array of credit and add to the table */}
                   {props.credits.map((credit, index) => (
                     <tr key={index}>
+                      {/* convert string to number then adjust how many places after deciimal we want */}
+                      <td>${parseFloat(credit.amount).toFixed(2)}</td>
                       <td>{credit.description}</td>
-                      <td>{credit.amount}</td>
                       <td>{credit.date?.split('T')[0]}</td>
                     </tr>
                   ))}
@@ -62,14 +66,12 @@ const Credits = (props) => {
             <form onSubmit={handleSubmit}>
               <label htmlFor="description">Description:</label>
               <input type="text" id="description" name="description" /><br /><br />
-              <label htmlFor="amount">Transaction:</label>
+              <label htmlFor="amount">Amount:</label>
               <input type="text" id="amount" name="amount" /><br /><br />
               <input type="submit" value="Submit" />
             </form>
             </div>
           </div>
-
-          
         </div>
       <Link to="/">Return to Home</Link>
     </div>

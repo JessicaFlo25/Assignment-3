@@ -29,9 +29,11 @@ class App extends Component {
   }
 
       //add data retrieved to the debit list array to pass down as props
-      addCredit = (debtname, amount, date) => {
+      addCredit = ( amount, description, date) => {
+        const nextCreditId = this.state.creditList.length + 1;
+
         //create object to be added to the array
-        const newCredit = { debtname, amount, date };
+        const newCredit = { id: nextCreditId, amount,description, date };
         //add the object in the debtList array
         this.setState(prevState => ({
           creditList: [...prevState.creditList, newCredit]
@@ -40,8 +42,10 @@ class App extends Component {
 
       //method to add data to debitList array
       addDebit = (description,amount, date) => {
+        //need to keep track of ids and pass to array
+        const nextDebitId = this.state.creditList.length + 1;
         //create object to be added to the array
-        const newDebit = { description, amount, date };
+        const newDebit = { id: nextDebitId, description, amount, date };
         //add the object in the debtList array
         this.setState(prevState => ({
           debitList: [...prevState.debitList, newDebit]
