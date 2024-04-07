@@ -7,6 +7,7 @@ Note: You don't need to work on this file for the Assignment.
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import {Link} from 'react-router-dom';
+import './Login.css'
 
 class LogIn extends Component {
   constructor (props) {  // Create and initialize state
@@ -43,8 +44,8 @@ class LogIn extends Component {
 
     // Render the login form (and call "handleSubmit" method when "Log In" button is clicked to submit form)
     return (
-      <div>
-        <h1>Login</h1>
+      <div className='lol'>
+        <h1 className='h1'>Login</h1>
         
         <form onSubmit={this.handleSubmit}>
           <div>
@@ -55,7 +56,7 @@ class LogIn extends Component {
             <label>Password</label>
             <input type="password" name="password" />
           </div>
-          <button>Log In</button>
+          <button className='button'>Log In</button>
         </form>  
         <br/>
         <Link to="/">Return to Home</Link>
