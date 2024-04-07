@@ -1,0 +1,26 @@
+.h1 {
+    font-size: 50px;
+}
+
+.idk {
+    font-size: 25px;
+    font-weight: bolder;
+}
+
+body {
+    background: aliceblue
+}
+
+input {
+    border-radius: 40px;
+}
+
+.button {
+    border-radius: 40px;
+    background-color: black;
+    color :white;
+    cursor: pointer;
+}
+.lol {
+    background-color: rgb(168, 187, 204);
+}
