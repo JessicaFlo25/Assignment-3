@@ -1,0 +1,6 @@
+.creditContainer {
+    display: flex;
+    flex-direction: row;
+    background-color: beige;
+    height: 100%;
+}
