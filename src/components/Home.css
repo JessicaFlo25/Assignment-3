@@ -1,0 +1,31 @@
+.homeBody {
+    background-color: aliceblue;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 10%;
+}
+
+.topHome {
+    margin-top: 20px;
+}
+
+.homeRedirects {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.homeLink {
+    text-decoration: none;
+    font-size: 20px;
+    color: #000;
+    transition: color 0.3s ease;
+}
+
+.homeLink:hover {
+    transform: scale(1.1); 
+    color: burlywood;
+  }

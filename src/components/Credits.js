@@ -20,7 +20,13 @@ const Credits = (props) => {
     
     // Extract form data from the e (submit event)
     const formData = new FormData(e.target);
-    
+      // Check if both fields are filled out
+      if (!formData.get('amount') || !formData.get('description')) {
+        // Alert the user to fill out both fields
+        alert('Please fill out both amount and description fields.');
+        return; // Exit the function without processing the form submission
+      }
+        
     // Call the function passed from the parent component to add the new credit
     props.addCredit(formData.get('amount'),formData.get('description'),formattedDate);
 
@@ -29,8 +35,8 @@ const Credits = (props) => {
   };
 
   return (
-    <div>
-      <h1>Credits</h1>
+    <div className='outerContainer'>
+      <h1 id='creditsHeader'>Credit Transaction History</h1>
       <br/>
         {/* layout of page */}
         <div className='creditContainer'>
@@ -39,6 +45,7 @@ const Credits = (props) => {
           </div>
           {/* right side includes table and data insertion fields */}
           <div className='rightSide'>
+              
               <table className='creditTable'>
                 <thead>
                   <tr>
@@ -59,19 +66,20 @@ const Credits = (props) => {
                   ))}
                 </tbody>
               </table>
+
             <div className='inputField'>
-            <h1>Insert new transaction:</h1>
-            <form onSubmit={handleSubmit}>
+            <p>Insert new transaction:</p>
+            <form className='creditForm' onSubmit={handleSubmit}>
               <label htmlFor="description">Description:</label>
               <input type="text" id="description" name="description" /><br /><br />
               <label htmlFor="amount">Amount:</label>
               <input type="text" id="amount" name="amount" /><br /><br />
-              <input type="submit" value="Submit" />
+              <input className="creditInput" type="submit" value="Submit" />
             </form>
             </div>
           </div>
         </div>
-      <Link to="/">Return to Home</Link>
+      <Link className="home" to="/">Return to Home</Link>
     </div>
   );
 }

@@ -1,6 +1,132 @@
+
+.outerContainer {
+    background-color:#262626;
+    height: 100%;
+    width: 100%;
+    font-family: 'Times New Roman', Times, serif;
+    margin-bottom: 0%;
+    padding-bottom: 100%;
+}
+
+#creditsHeader {
+    margin-top: 0%;
+    color:white;
+}
+
+
 .creditContainer {
     display: flex;
     flex-direction: row;
     background-color: beige;
-    height: 100%;
+    justify-content: center;
+    padding:30px
 }
+
+.leftSide {
+    background-color: #7EA3CC;
+    width: 20%;
+    padding: 0%;
+    border-right: 3px solid #000; /* 1px solid black border */
+    word-wrap: break-word;
+    overflow: hidden;
+    padding: 50px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+.rightSide {
+    display: flex;
+    flex-direction: column;
+    background-color:#CCAD8F;
+    align-items: center;
+    width: 80%;
+    word-wrap: break-word;
+    overflow: hidden;
+    padding: 30px;
+}
+
+.creditTable {
+    width: 25%;
+}
+
+.inputField {
+    width: 25%;
+}
+
+.creditTable {
+    width: 80%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.creditTable th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-align: center;
+    padding: 8px;
+
+  }
+
+  .creditTable td {
+    border-bottom: 1px solid #ddd;
+    padding: 8px;
+  }
+
+  .creditTable tbody tr {
+    background-color: white;
+  }
+
+  .creditTable tbody tr:hover {
+    background-color: grey;
+  }
+
+  .creditForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10px;
+    font-weight: bold;
+  }
+
+  .inputField p {
+    font-weight: bold;
+    font-size: 20px;
+  }
+
+  .creditForm input {
+    margin-bottom: 60px;
+    border-radius: 5%;
+    border-style: none;
+  }
+
+  .creditForm label {
+    margin-top: 5px;
+  }
+
+  .home {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    float: right;
+    margin-top: 80px;
+    margin-right: 40px;
+    transition: color 0.3s ease;
+  }
+  
+  .home:hover {
+    color:beige; 
+    font-weight: 400;
+    transform: scale(1.1); 
+  }
+
+  .creditInput {
+    border-radius: 3%;
+    font-family: 'Times New Roman', Times, serif;
+    padding:5px;
+    background-color: aliceblue;
+  }
+  
+  .creditInput:hover {
+    transform: scale(1.1); 
+  }
