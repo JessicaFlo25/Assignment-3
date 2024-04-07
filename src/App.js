@@ -48,7 +48,7 @@ class App extends Component {
         //need to keep track of ids and pass to array
         const nextDebitId = this.state.creditList.length + 1;
         //will perform math for "deposits"
-        const updatedBalance = this.state.accountBalance + parseFloat(amount);
+        const updatedBalance = this.state.accountBalance - parseFloat(amount);
         //create object to be added to the array
         const newDebit = { id: nextDebitId, description, amount, date };
         //add the object in the debtList array
