@@ -1,32 +1,47 @@
-/*==================================================
-src/components/Debits.js
-
-The Debits component contains information for Debits page view.
-Note: You need to work on this file for the Assignment.
-==================================================*/
-import {Link} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import AccountBalance from './AccountBalance'; 
+import './Debits.css'
 
 const Debits = (props) => {
-  // Create the list of Debit items
+  const [description, setDescription] = useState('');
+  const [amount, setAmount] = useState('');
+  const [error, setError] = useState(''); 
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const numericAmount = parseFloat(amount) || 0;
+    if (numericAmount <= 0) {
+      setError('Amount must be greater than 0');
+      return;
+    }
+
+    props.addDebit(description, numericAmount, new Date().toISOString().slice(0, 10));
+    setDescription('');
+    setAmount('');
+    setError(''); 
+  };
+
   let debitsView = () => {
-    const { debits } = props;
-    return debits.map((debit) => {  // Extract "id", "amount", "description" and "date" properties of each debits JSON array element
-      let date = debit.date.slice(0,10);
+    return props.debits.map((debit) => {
+      let date = debit.date.slice(0, 10);
       return <li key={debit.id}>{debit.amount} {debit.description} {date}</li>
     });
-  }
-  // Render the list of Debit items and a form to input new Debit item
+  };
+
   return (
-    <div>
+    <div className='outerContainer1'>
       <h1>Debits</h1>
-
+      <div className='fein'>
+        <AccountBalance accountBalance={props.accountBalance}/>
+      </div>
       {debitsView()}
-
-      <form onSubmit={props.addDebit}>
-        <input type="text" name="description" />
-        <input type="number" name="amount" />
-        <button type="submit">Add Debit</button>
+      <form onSubmit={handleSubmit}>
+        <input className="butts" type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+        <input className="butts" type="text" name="amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
+        <button className="butts" type="submit">Add Debit</button>
       </form>
+      {error && <p className="error">{error}</p>}
       <br/>
       <Link to="/">Return to Home</Link>
     </div>

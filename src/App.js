@@ -32,7 +32,7 @@ class App extends Component {
       addCredit = ( amount, description, date) => {
         const nextCreditId = this.state.creditList.length + 1;
         //account for change in account balance by subtracting new entry from account balance
-        const updatedBalance = this.state.accountBalance - parseFloat(amount);
+        const updatedBalance = this.state.accountBalance + parseFloat(amount);
         //create object to be added to the array
         const newCredit = { id: nextCreditId, amount,description, date };
         //add the object in the debtList array
@@ -48,7 +48,7 @@ class App extends Component {
         //need to keep track of ids and pass to array
         const nextDebitId = this.state.creditList.length + 1;
         //will perform math for "deposits"
-        const updatedBalance = this.state.accountBalance + parseFloat(amount);
+        const updatedBalance = this.state.accountBalance - parseFloat(amount);
         //create object to be added to the array
         const newDebit = { id: nextDebitId, description, amount, date };
         //add the object in the debtList array
