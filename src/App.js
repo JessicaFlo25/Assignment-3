@@ -56,16 +56,32 @@ class App extends Component {
     componentDidMount () {
       //access relevant data to be added to creditlist array
       fetch('https://johnnylaicode.github.io/api/credits.json')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({creditList : data});
+      .then((response) => response.json())
+      .then((data) => {
+        //counter for sum of credits
+        let totalCredits = 0;
+        for (const credit of data) {
+          //sum each time
+          totalCredits += parseFloat(credit.amount);
+        }
+  
+        // Update balance by subtracting totalCredits
+        this.setState((prevState) => ({
+          creditList: data,
+          accountBalance: prevState.accountBalance - totalCredits
+        }));
       });
 
       //access data to be added to debitlist array 
       fetch('https://johnnylaicode.github.io/api/debits.json')
-      .then(response => response.json())
-      .then(data => {
-        this.setState({debitList : data});
+      .then((response) => response.json())
+      .then((data) => {
+        // Calculate totalDebits from fetched data
+        let totalDebits = 0;
+        for (const debit of data) {
+          totalDebits += parseFloat(debit.amount);
+        }
+        this.setState({ debitList: data, totalDebits });
       });
 
     }
