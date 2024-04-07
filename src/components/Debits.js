@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import AccountBalance from './AccountBalance'; 
+import './Debits.css'
 
 const Debits = (props) => {
   const [description, setDescription] = useState('');
@@ -29,16 +30,16 @@ const Debits = (props) => {
   };
 
   return (
-    <div>
+    <div className='outerContainer1'>
       <h1>Debits</h1>
-      <div className='account'>
+      <div className='fein'>
         <AccountBalance accountBalance={props.accountBalance}/>
       </div>
       {debitsView()}
       <form onSubmit={handleSubmit}>
-        <input type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
-        <input type="text" name="amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
-        <button type="submit">Add Debit</button>
+        <input className="butts" type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+        <input className="butts" type="text" name="amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
+        <button className="butts" type="submit">Add Debit</button>
       </form>
       {error && <p className="error">{error}</p>}
       <br/>
