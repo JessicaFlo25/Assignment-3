@@ -8,9 +8,10 @@ import React, {Component} from 'react';
 class AccountBalance extends Component {
   // Display account balance
   render() {
+    console.log("here " + this.props.accountBalance)
     return (
       <div>
-        Balance: {this.props.accountBalance}
+        Balance: ${parseFloat(this.props.accountBalance).toFixed(2)}
       </div>
     );
   }

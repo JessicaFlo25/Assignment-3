@@ -5,7 +5,6 @@ The Credits component contains information for Credits page view.
 Note: You need to work on this file for the Assignment.
 ==================================================*/
 import {Link} from 'react-router-dom';
-import React, { useState, useEffect } from 'react';
 import AccountBalance from './AccountBalance';
 
 const Credits = (props) => {
@@ -35,9 +34,7 @@ const Credits = (props) => {
         {/* layout of page */}
         <div className='creditContainer'>
           <div className='leftSide'>
-            <p>
-              {<AccountBalance />}
-            </p>
+              <AccountBalance accountBalance = {props.accountBalance}/>
           </div>
           {/* right side includes table and data insertion fields */}
           <div className='rightSide'>
@@ -62,7 +59,7 @@ const Credits = (props) => {
                 </tbody>
               </table>
             <div className='inputField'>
-            <h1>Insert new credit debt:</h1>
+            <h1>Insert new transaction:</h1>
             <form onSubmit={handleSubmit}>
               <label htmlFor="description">Description:</label>
               <input type="text" id="description" name="description" /><br /><br />
