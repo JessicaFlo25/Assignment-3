@@ -37,8 +37,8 @@ const Debits = (props) => {
       </div>
       {debitsView()}
       <form onSubmit={handleSubmit}>
-        <input className="butts" type="text" name="description" value={description} onChange={(e) => setDescription(e.target.value)} />
-        <input className="butts" type="text" name="amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
+        <input className="butts" type="text" name="description" value={description} placeholder="Description" onChange={(e) => setDescription(e.target.value)} />
+        <input className="butts" type="text" name="amount" value={amount} placeholder="Amount" onChange={(e) => setAmount(e.target.value)} />
         <button className="butts" type="submit">Add Debit</button>
       </form>
       {error && <p className="error">{error}</p>}
